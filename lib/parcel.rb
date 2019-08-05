@@ -5,6 +5,10 @@ class Parcel
   end
 
   def calculate_size
-    "small"
+    if @dimensions.max < 10
+      "small"
+    elsif @dimensions.max < 50
+      "medium"
+    end  
   end
 end
