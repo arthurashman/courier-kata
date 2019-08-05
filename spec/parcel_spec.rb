@@ -37,10 +37,18 @@ describe Parcel do
     end
   end
 
-  describe '#overweight?' do
-    it 'returns true if small parcel weight limit exceeded' do
+  describe '#overweight' do
+    it 'returns amount small parcel weight exceeded by' do
       parcel = Parcel.new([8,8,8], 1.2)
-      expect(parcel.overweight?).to eq(true)
+      expect(parcel.overweight).to eq(1)
+    end
+    it 'returns amount medium parcel weight exceeded by' do
+      parcel = Parcel.new([40,8,8], 6.4)
+      expect(parcel.overweight).to eq(4)
+    end
+    it 'returns amount large parcel weight exceeded by' do
+      parcel = Parcel.new([8,80,8], 8)
+      expect(parcel.overweight).to eq(2)
     end
   end
 end
