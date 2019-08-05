@@ -1,6 +1,27 @@
 # Courier Kata
+
 ## Description
 This is a kata that implements a courier service, pricing parcels for shipping. 
+
+[Getting started](#getting-started) | [Usage](#usage) | [Running tests](#running-tests) | [Criteria](#criteria) | [Approach](#approach) | [Next steps](#next-steps)
+
+## Getting started
+
+Fork or clone this repo:      
+`git clone git@github.com:arthurashman/courier-kata.git`    
+`gem install bundle`     
+`bundle`     
+
+## Usage
+```
+irb
+load './lib/courier.rb'
+load './lib/parcel.rb'
+```
+
+## Running tests
+
+`rspec`
 
 ## Criteria
 1) The initial implementation just needs to take into account a parcel's size. For each size
@@ -46,3 +67,18 @@ with associated saving, e.g. "-2"
 - Discounts should not impact the price of individual parcels, i.e. their individual cost
 should remain the same as it was before
 - Speedy shipping applies after discounts are taken into account
+
+## Approach
+I approached this challenge test first, using ruby and RSpec. 
+1. I started by considering what objects I would anticipate for the initial implememntation, deciding on a Parcel class that would know about its own dimensions and know its size. There would be a Courier class that when passed a Parcel would be able to calculate the price dependent on the size.
+2. For speedy shipping, I extended the Courier class to have a know if the customer had selected speedy. Because the reciept was to be itemised, I also created a print price method to format the shipping costs as subtotal, speedy shipping cost and total cost. 
+3. For weight restrictions, I extended the parcel info constant to include weight maximums for each parcel size. An overweight method calculated by how many kilos(rounded up) the parcel was over the weight restriction by - a variable that would be held by the parcel object.
+
+## Next 
+As I was having some trouble implementing the calculating of the overweight fees by the courier class, I would consider moving the calculating of how many kilos overweight the package was to the courier. 
+I would add the itemised overweight fees to the reciept.
+I would add the item type to the reciept (having re-read the instructions)
+
+4. I had some questions around this 'heavy' category, which given the chance I would have spoken to a product owner about, however, I would work on the assumption that heavy parcels would be categorised as heavy on the reciept, and charged as overweight up to a cap of £50. I would have the parcel categorise itself as 'heavy' if over its size category weight limit, with the courier class capping cost at $50 if under 50kg, and adding additional weight charges when over 50kg. All of this would be represented in the reciept
+
+5. To consider this new multibuy feature, I would look at passing an array of parcel objects to the courier class rather than to the calculate price method, modifying the calculate price method appropriately to iterate through the array, and construct a hash to represent each parcel with its details and fees and discounts.
