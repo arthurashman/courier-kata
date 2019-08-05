@@ -1,4 +1,6 @@
 class Courier
+  PRICE = {:small => 3, :medium => 8, :large => 15, :XL => 25}
+  SPEEDY_MULTIPLIER = 2
 
   def initialize
     @subtotal = 0
@@ -7,27 +9,28 @@ class Courier
 
   def calculate_price(parcel:, speedy: false)
     @speedy = true if speedy == true
-    
+
     case parcel.size
     when "small"
-      @subtotal = 3
+      @subtotal = PRICE[:small]
     when "medium"
-      @subtotal = 8
+      @subtotal = PRICE[:medium]
     when "large"
-      @subtotal = 15
+      @subtotal = PRICE[:large]
     when "XL"
-      @subtotal = 25
+      @subtotal = PRICE[:XL]
     end
   end
 
   def print_price
     receipt = ["Subtotal = $#{@subtotal}"]
     if @speedy == true
-      receipt << "Speedy shipping = $#{@subtotal * 2 - @subtotal}"
-      receipt << "Total = $#{@subtotal * 2}"
+      receipt << "Speedy shipping = $#{@subtotal * SPEEDY_MULTIPLIER - @subtotal}"
+      receipt << "Total = $#{@subtotal * SPEEDY_MULTIPLIER}"
     else
       receipt << "Total = $#{@subtotal}"
     end
-    receipt.join('\n')  end
+    receipt.join('\n')  
+  end
 end
 
