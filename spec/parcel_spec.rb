@@ -35,7 +35,5 @@ describe Parcel do
       parcel = Parcel.new([20,20,90])
       expect(parcel.calculate_size).to eq("large")
     end
-
-
   end
 end
