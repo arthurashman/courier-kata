@@ -5,6 +5,7 @@ class Courier
   def initialize
     @subtotal = 0
     @speedy = false
+    @speedy_cost = @subtotal * SPEEDY_MULTIPLIER - @subtotal
   end
 
   def calculate_price(parcel:, speedy: false)

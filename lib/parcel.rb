@@ -1,12 +1,13 @@
 class Parcel
 
-  attr_reader :size
+  attr_reader :size, :weight
 
   PARCEL_SIZE = {:small => 10, :medium => 50, :large => 100}
 
-  def initialize(dimensions)
+  def initialize(dimensions, weight)
     @dimensions = dimensions
     @size = ""
+    @weight = weight
   end
 
   def calculate_size
@@ -19,5 +20,9 @@ class Parcel
     else
       @size = "XL"
     end  
+  end
+
+  def overweight?
+    true
   end
 end

@@ -51,14 +51,32 @@ describe Courier do
       courier.calculate_price(parcel: xl_parcel)
       expect(courier.print_price).to eq("Subtotal = $25\\nTotal = $25")
     end 
-  
     it 'prints correct price for speedy shipping small parcel' do
       courier = Courier.new
       small_parcel = instance_double("Parcel", :size => "small")  
       courier.calculate_price(parcel: small_parcel, speedy: true)
       expect(courier.print_price).to eq("Subtotal = $3\\nSpeedy shipping = $3\\nTotal = $6")
     end 
-  
-
+    it 'prints correct price for speedy shipping medium parcel' do
+      courier = Courier.new
+      medium_parcel = instance_double("Parcel", :size => "medium")  
+      courier.calculate_price(parcel: medium_parcel, speedy: true)
+      expect(courier.print_price).to eq("Subtotal = $8\\nSpeedy shipping = $8\\nTotal = $16")
+    end 
+    it 'prints correct price for speedy shipping large parcel' do
+      courier = Courier.new
+      large_parcel = instance_double("Parcel", :size => "large")  
+      courier.calculate_price(parcel: large_parcel, speedy: true)
+      expect(courier.print_price).to eq("Subtotal = $15\\nSpeedy shipping = $15\\nTotal = $30")
+    end 
+    it 'prints correct price for speedy shipping xl parcel' do
+      courier = Courier.new
+      xl_parcel = instance_double("Parcel", :size => "XL")  
+      courier.calculate_price(parcel: xl_parcel, speedy: true)
+      expect(courier.print_price).to eq("Subtotal = $25\\nSpeedy shipping = $25\\nTotal = $50")
+    end 
   end
+  # describe '#overweight_fees' do
+  #   it 'calculates '
+  # end
 end
