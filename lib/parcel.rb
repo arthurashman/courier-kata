@@ -9,6 +9,10 @@ class Parcel
       "small"
     elsif @dimensions.max < 50
       "medium"
+    elsif @dimensions.max < 100
+      "large"
+    else
+      "XL"
     end  
   end
 end
