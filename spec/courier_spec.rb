@@ -3,7 +3,6 @@ require 'courier'
 describe Courier do
 
   describe '#calculate_price' do
- 
 
     it 'calculates correct price for a small parcel' do
       courier = Courier.new
@@ -22,8 +21,17 @@ describe Courier do
     end
     it 'calculates correct price for an XL parcel' do
       courier = Courier.new
-      XL_parcel = instance_double("Parcel", :size => "XL")  
-      expect(courier.calculate_price(XL_parcel)).to eq(25)
+      xl_parcel = instance_double("Parcel", :size => "XL")  
+      expect(courier.calculate_price(xl_parcel)).to eq(25)
     end
+  end
+
+  describe '#print_price' do
+    it 'prints correct price for a small parcel' do
+      courier = Courier.new
+      small_parcel = instance_double("Parcel", :size => "small")  
+      courier.calculate_price(small_parcel)
+      expect(courier.print_price).to eq("Total = $3")
+    end 
   end
 end
