@@ -33,5 +33,23 @@ describe Courier do
       courier.calculate_price(small_parcel)
       expect(courier.print_price).to eq("Total = $3")
     end 
+    it 'prints correct price for a medium parcel' do
+      courier = Courier.new
+      medium_parcel = instance_double("Parcel", :size => "medium")  
+      courier.calculate_price(medium_parcel)
+      expect(courier.print_price).to eq("Total = $8")
+    end 
+    it 'prints correct price for a large parcel' do
+      courier = Courier.new
+      large_parcel = instance_double("Parcel", :size => "large")  
+      courier.calculate_price(large_parcel)
+      expect(courier.print_price).to eq("Total = $15")
+    end 
+    it 'prints correct price for a XL parcel' do
+      courier = Courier.new
+      xl_parcel = instance_double("Parcel", :size => "XL")  
+      courier.calculate_price(xl_parcel)
+      expect(courier.print_price).to eq("Total = $25")
+    end 
   end
 end
