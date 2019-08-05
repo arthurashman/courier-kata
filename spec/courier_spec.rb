@@ -76,7 +76,11 @@ describe Courier do
       expect(courier.print_price).to eq("Subtotal = $25\\nSpeedy shipping = $25\\nTotal = $50")
     end 
   end
-  # describe '#overweight_fees' do
-  #   it 'calculates '
-  # end
+  describe '#overweight_fees' do
+    it 'calculates correctly fees on a 2 kilo small package' do
+      courier = Courier.new
+      small_parcel = instance_double("Parcel", :size => "small", :weight => 2.0)
+      expect(courier.overweight_fees).to eq(2)  
+    end
+  end
 end

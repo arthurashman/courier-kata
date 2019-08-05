@@ -23,6 +23,10 @@ class Courier
     end
   end
 
+  def overweight_fees
+    2
+  end
+
   def print_price
     receipt = ["Subtotal = $#{@subtotal}"]
     if @speedy == true

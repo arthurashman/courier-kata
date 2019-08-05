@@ -41,6 +41,8 @@ class Parcel
 
   def overweight
     calculate_size
-    @weight.ceil - PARCEL_RESTRICTIONS[@size.to_sym][:weight]
+    if @weight > PARCEL_RESTRICTIONS[@size.to_sym][:weight]
+      @weight.ceil - PARCEL_RESTRICTIONS[@size.to_sym][:weight]
+    end
   end
 end
