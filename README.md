@@ -74,7 +74,7 @@ I approached this challenge test first, using ruby and RSpec.
 2. For speedy shipping, I extended the Courier class to have a know if the customer had selected speedy. Because the reciept was to be itemised, I also created a print price method to format the shipping costs as subtotal, speedy shipping cost and total cost. 
 3. For weight restrictions, I extended the parcel info constant to include weight maximums for each parcel size. An overweight method calculated by how many kilos(rounded up) the parcel was over the weight restriction by - a variable that would be held by the parcel object.
 
-## Next 
+## Next steps
 As I was having some trouble implementing the calculating of the overweight fees by the courier class, I would consider moving the calculating of how many kilos overweight the package was to the courier. 
 I would add the itemised overweight fees to the reciept.
 I would add the item type to the reciept (having re-read the instructions)
