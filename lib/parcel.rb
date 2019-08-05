@@ -1,18 +1,21 @@
 class Parcel
 
+  attr_reader :size
+  
   def initialize(dimensions)
     @dimensions = dimensions
+    @size = ""
   end
 
   def calculate_size
     if @dimensions.max < 10
-      "small"
+      @size = "small"
     elsif @dimensions.max < 50
-      "medium"
+      @size = "medium"
     elsif @dimensions.max < 100
-      "large"
+      @size = "large"
     else
-      "XL"
+      @sixe = "XL"
     end  
   end
 end

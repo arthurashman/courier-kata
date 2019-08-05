@@ -1,2 +1,0 @@
-class ShippingCalculator
-end
